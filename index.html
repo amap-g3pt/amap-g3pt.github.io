@@ -70,8 +70,7 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              G3PT: Unleash the Power of Autoregressive Modeling in 3D Generation via <br>
-              Cross-Scale Querying Transformer
+              G3PT: Unleash the Power of Autoregressive Modeling in 3D Generation via Cross-Scale Querying Transformer
             </h1>
             <div class="column has-text-centered">
               <div class="publication-links">
@@ -159,9 +158,15 @@
   <section class="hero teaser">
     <div class="container">
       <div class="hero-body">
-        <img id="teaser-image" src="./static/images/fig_teaser.jpg" alt="Teaser Image" class="teaser-image">
+        <img id="teaser-image" src="./static/images/Fig_CVQ.png" alt="Teaser Image" class="teaser-image">
         <h2 class="subtitle has-text-centered">
-          <span class="dnerf">Variational Tokenizer (VAT)</span> compresses unordered 3D data into compact 1D latent tokens, while supporting high-fidelity 3D generation via autoregressive modeling.
+          <span class="dnerf">Comparison of multi-scale vector quantization approaches.</span> (a) The quantization approach used in VAR 
+          relies on average pooling and bilinear upsampling, which are not suitable for unordered data. 
+          (b) Our Cross-scale Vector Quantization (CVQ) overcomes this limitation with CQT, which employs a set of cross-scale learnable 
+          queries to globally "downsample" and "upsample" the unordered input feature with cross-attention. 
+          Specifically, a set of "downsample" learnable queries "pool" the input feature into token vectors of decreased length 
+          at each scale, effectively forming a level-of-detail tokenization. These cross-scale token vectors are then "upsampled" 
+          to the original scale for residual quantization, with another set of "upsample" learnable queries. 
         </h2>
       </div>
     </div>
