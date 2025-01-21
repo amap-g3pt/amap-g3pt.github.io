@@ -70,13 +70,13 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <h1 class="title is-1 publication-title">
-              3D representation in 512-Byte: <br> 
-              Variational tokenizer is the key for autoregressive 3D generation
+              G3PT: Unleash the Power of Autoregressive Modeling in 3D Generation via <br>
+              Cross-Scale Querying Transformer
             </h1>
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- PDF Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://arxiv.org/pdf/2412.02202"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -93,7 +93,7 @@
                     </span>
                     <span>arXiv</span>
                   </a>
-                </span>
+                </span> -->
                 <!-- Video Link. -->
                 <!-- <span class="link-block">
                   <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
@@ -105,7 +105,7 @@
                   </a>
                 </span> -->
                 <!-- Code Link. -->
-                <span class="link-block">
+                <!-- <span class="link-block">
                   <a href="https://github.com/sparse-mvs-2/VAT"
                      class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -113,7 +113,7 @@
                     </span>
                     <span>Code</span>
                     </a>
-                </span>
+                </span> -->
                 <!-- Dataset Link. -->
                 <!-- <span class="link-block">
                   <a href="https://github.com/google/nerfies/releases/tag/0.1"
@@ -136,16 +136,20 @@
   <section class="hero teaser"></section>
     <div class="container">
       <div class="hero-body">
-        <img id="teaser-image" src="./static/images/fig_vq.png" alt="Teaser Image" class="teaser-image">
+        <img id="teaser-image" src="./static/images/Fig_pipeline.png" alt="Teaser Image" class="teaser-image">
         <p class="is-size-9" style="line-height: 1.6; color: #555;">
-          <span class="dnerf" style="font-weight: bold; font-style: italic;">Abstract:</span> Autoregressive transformers have revolutionized high-fidelity image generation. One crucial ingredient lies in the tokenizer, which compresses high-resolution image patches into manageable discrete tokens with a scanning or hierarchical order suitable for large language models. 
-          Extending these tokenizers to 3D generation, however, presents a significant challenge: unlike image patches that naturally exhibit spatial sequence and multi-scale relationships, 
-          3D data lacks an inherent order, making it difficult to compress into fewer tokens while preserving structural details.
-          To address this, we introduce the Variational Tokenizer (VAT), which transforms unordered 3D data into compact latent tokens with an implicit hierarchy, suited for efficient and high-fidelity coarse-to-fine autoregressive modeling. VAT begins with an in-context transformer, which compress numerous unordered 3D features into a reduced token set with minimal information loss. This latent space is then mapped to a Gaussian distribution for residual quantization, with token counts progressively increasing across scales. 
-          In this way, tokens at different scales naturally establish the interconnections by allocating themselves into different subspaces within the same Gaussian distribution, facilitating discrete modeling of token relationships across scales.
-          During the decoding phase, a high-resolution triplane is utilized to convert these compact latent tokens into detailed 3D shapes. 
-          Extensive experiments demonstrate that VAT enables scalable and efficient 3D generation, outperforming existing methods in quality, efficiency, and generalization.
-          Remarkably, VAT achieves up to a 250x compression, reducing a 1MB mesh to just 3.9KB with a 96% F-score, and can further compress to 256 int8 tokens, achieving a 2000x reduction while maintaining a 92% F-score.
+          <span class="dnerf" style="font-weight: bold; font-style: italic;">Abstract:</span> Autoregressive transformers have revolutionized generative models 
+          in language processing and shown substantial promise in image and video generation. However, these models face significant challenges 
+          when extended to 3D generation tasks due to their reliance on next-token prediction to learn token sequences, which is incompatible 
+          with the unordered nature of 3D data. Instead of imposing an artificial order on 3D data, in this paper, 
+          we introduce G3PT -- a scalable, coarse-to-fine 3D native generative model with cross-scale vector quantization and 
+          cross-scale autoregressive modeling. The key is to map point-based 3D data into discrete tokens with different levels of detail, 
+          naturally establishing a sequential relationship across a variety of scales suitable for autoregressive modeling. 
+          Remarkably, our method connects tokens globally across different levels of detail without manually specified ordering. 
+          Benefiting from this approach, G3PT features a versatile 3D generation pipeline that effortlessly supports the generation of 
+          3D shapes under diverse conditional modalities. Extensive experiments demonstrate that G3PT achieves superior 3D generation quality 
+          and generalization ability compared to previous baselines. Most importantly, for the first time in 3D generation, 
+          scaling up G3PT reveals distinct power-law scaling behaviors.
         </p>
       </div>
     </div>
