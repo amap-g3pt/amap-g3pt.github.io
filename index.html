@@ -131,7 +131,46 @@
     </div>
   </section>
 
-  <section class="hero teaser"></section>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Autoregressive transformers have revolutionized generative models in language processing and shown substantial promise in image and video generation. 
+              However, these models face significant challenges when extended to 3D generation tasks due to their reliance on next-token prediction to learn token sequences, 
+              which is incompatible with the unordered nature of 3D data. Instead of imposing an artificial order on 3D data, in this paper, 
+              we introduce G3PT - a scalable, coarse-to-fine 3D native generative model with cross-scale vector quantization and 
+              cross-scale autoregressive modeling. The key is to map point-based 3D data into discrete tokens with different levels of detail, 
+              naturally establishing a sequential relationship across a variety of scales suitable for autoregressive modeling. 
+              Remarkably, our method connects tokens globally across different levels of detail without manually specified ordering. 
+              Benefiting from this approach, G3PT features a versatile 3D generation pipeline that effortlessly supports the generation of 
+              3D shapes under diverse conditional modalities. Extensive experiments demonstrate that G3PT achieves superior 3D generation quality 
+              and generalization ability compared to previous baselines. Most importantly, for the first time in 3D generation, 
+              scaling up G3PT reveals distinct power-law scaling behaviors.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+  
+      <!-- Paper video. -->
+      <!-- <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Video</h2>
+          <div class="publication-video">
+            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div> -->
+      <!--/ Paper video. -->
+    </div>
+  </section>
+
+  <!-- <section class="hero teaser"></section>
     <div class="container">
       <div class="hero-body">
         <p class="is-size-9" style="line-height: 1.6; color: #555;">
@@ -150,7 +189,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </section> -->
  
   <section class="hero teaser"></section>
     <div class="container">
@@ -169,9 +208,30 @@
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Real2Sim Generation Pipeline</h2>
+          <image src="./static/images/Fig_CVQ.png" width=100% style="display: block; margin: auto;"></image>
+          <div class="content has-text-justified">
+            <p>
+              Comparison of multi-scale vector quantization approaches. (a) The quantization approach used in VAR 
+              relies on average pooling and bilinear upsampling, which are not suitable for unordered data. 
+              (b) Our Cross-scale Vector Quantization (CVQ) overcomes this limitation with CQT, which employs a set of cross-scale learnable 
+              queries to globally "downsample" and "upsample" the unordered input feature with cross-attention. 
+              Specifically, a set of "downsample" learnable queries "pool" the input feature into token vectors of decreased length 
+              at each scale, effectively forming a level-of-detail tokenization. These cross-scale token vectors are then "upsampled" 
+              to the original scale for residual quantization, with another set of "upsample" learnable queries. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
  
-  
-  <section class="hero teaser">
+  <!-- <section class="hero teaser">
     <div class="container">
       <div class="hero-body">
         <img id="teaser-image" src="./static/images/Fig_CVQ.png" alt="Teaser Image" class="teaser-image">
@@ -186,7 +246,7 @@
         </h2>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <section class="hero teaser">
     <div class="container">
