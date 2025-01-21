@@ -131,6 +131,24 @@
     </div>
   </section>
 
+  <section class="hero teaser"></section>
+    <div class="container">
+      <div class="hero-body">
+        <img id="teaser-image" src="./static/images/Fig_pipeline.png" alt="Teaser Image" class="teaser-image">
+        <p class="is-size-9" style="line-height: 1.6; color: #555;">
+          <span class="dnerf" style="font-weight: bold; font-style: italic;">Overall pipeline of G3PT for representing and generating unordered 3D data.</span> 
+          (a) Cross-scale Vector Quantization (CVQ): G3PT encodes the input point cloud into discrete scales of token vectors, 
+          each representing a different level of detail. The proposed Cross-scale Querying Transformer (CQT) utilizes 
+          cross-attention mechanisms with learnable queries of varying lengths to globally connect tokens across different scales, 
+          without requiring the tokens to be organized in a specific order. The final output is the occupancy value for each query point. 
+          (b) Cross-scale AutoRegressive modeling (CAR): G3PT reuses the CQT from the stage of CVQ for cross-scale dimension alignment and 
+          enables scalable 3D native generation from coarse to fine scales under various conditions, 
+          with an autoregressive transformer trained using next-scale prediction.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="container is-max-desktop">
       <!-- Abstract. -->
@@ -154,19 +172,6 @@
           </div>
         </div>
       </div>
-      <!--/ Abstract. -->
-  
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div> -->
-      <!--/ Paper video. -->
     </div>
   </section>
 
@@ -190,21 +195,24 @@
       </div>
     </div>
   </section> -->
- 
-  <section class="hero teaser"></section>
-    <div class="container">
-      <div class="hero-body">
-        <img id="teaser-image" src="./static/images/Fig_pipeline.png" alt="Teaser Image" class="teaser-image">
-        <p class="is-size-9" style="line-height: 1.6; color: #555;">
-          <span class="dnerf" style="font-weight: bold; font-style: italic;">Overall pipeline of G3PT for representing and generating unordered 3D data.</span> 
-          (a) Cross-scale Vector Quantization (CVQ): G3PT encodes the input point cloud into discrete scales of token vectors, 
-          each representing a different level of detail. The proposed Cross-scale Querying Transformer (CQT) utilizes 
-          cross-attention mechanisms with learnable queries of varying lengths to globally connect tokens across different scales, 
-          without requiring the tokens to be organized in a specific order. The final output is the occupancy value for each query point. 
-          (b) Cross-scale AutoRegressive modeling (CAR): G3PT reuses the CQT from the stage of CVQ for cross-scale dimension alignment and 
-          enables scalable 3D native generation from coarse to fine scales under various conditions, 
-          with an autoregressive transformer trained using next-scale prediction.
-        </p>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Comparison of multi-scale vector quantization approaches</h2>
+          <image src="./static/images/Fig_CVQ.png" width=100% style="display: block; margin: auto;"></image>
+          <div class="content has-text-justified">
+            <p>
+              (a) The quantization approach used in VAR relies on average pooling and bilinear upsampling, 
+              which are not suitable for unordered data. (b) Our Cross-scale Vector Quantization (CVQ) overcomes this limitation with CQT, which employs a set of cross-scale learnable 
+              queries to globally "downsample" and "upsample" the unordered input feature with cross-attention. 
+              Specifically, a set of "downsample" learnable queries "pool" the input feature into token vectors of decreased length 
+              at each scale, effectively forming a level-of-detail tokenization. These cross-scale token vectors are then "upsampled" 
+              to the original scale for residual quantization, with another set of "upsample" learnable queries. 
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -213,17 +221,15 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h2 class="title is-3 has-text-centered">Real2Sim Generation Pipeline</h2>
-          <image src="./static/images/Fig_CVQ.png" width=100% style="display: block; margin: auto;"></image>
+          <h2 class="title is-3 has-text-centered">Illustration of the proposed CAR process in G3PT</h2>
+          <image src="./static/images/Fig_CAR.png" width=100% style="display: block; margin: auto;"></image>
           <div class="content has-text-justified">
             <p>
-              Comparison of multi-scale vector quantization approaches. (a) The quantization approach used in VAR 
-              relies on average pooling and bilinear upsampling, which are not suitable for unordered data. 
-              (b) Our Cross-scale Vector Quantization (CVQ) overcomes this limitation with CQT, which employs a set of cross-scale learnable 
-              queries to globally "downsample" and "upsample" the unordered input feature with cross-attention. 
-              Specifically, a set of "downsample" learnable queries "pool" the input feature into token vectors of decreased length 
-              at each scale, effectively forming a level-of-detail tokenization. These cross-scale token vectors are then "upsampled" 
-              to the original scale for residual quantization, with another set of "upsample" learnable queries. 
+              The transformer predicts the next-scale token vector using features derived from the "upsampled" tokens of the previous scale. 
+              The "upsampling" process involves two layers of cross-attention to align the number of tokens across scales. 
+              First, features are "upsampled" with a learnable query, and then "downsampled" using another query to match the token number 
+              of the next scale. A causal mask is applied to maintain the correct order and dependencies across different scales and 
+              input conditions, ensuring coherence in the model predictions.
             </p>
           </div>
         </div>
@@ -248,7 +254,7 @@
     </div>
   </section> -->
 
-  <section class="hero teaser">
+  <!-- <section class="hero teaser">
     <div class="container">
       <div class="hero-body">
         <img id="teaser-image" src="./static/images/Fig_CAR.png" alt="Teaser Image" class="teaser-image">
@@ -262,7 +268,7 @@
         </h2>
       </div>
     </div>
-  </section>
+  </section> -->
 
 
 <section class="hero teaser">
